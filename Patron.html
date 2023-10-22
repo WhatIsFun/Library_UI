@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Patron Management</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="Images/logo.jpg" type="Image/logo">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="CSS/dashboard.css">
+  <link rel="stylesheet" href="CSS/form.css">
+
+</head>
+
+<body class="Obody">
+  <div id="navbar-placeholder"></div>
+  <script src="JS/navbar.js"></script>
+  <script>
+    setNavbar();
+  </script><br><br>
+
+  <div>
+    <h1 style="color: #f3f3f3;">Patron Management</h1>
+  </div>
+  <div class="button-container">
+    <button style="background-color: #ee964b;" class="button" onclick="toggleForm('addBookForm')"><i class="fa fa-plus"></i> Add
+      Patron</button>
+    <form id="addBookForm" style="display: none;">
+      <div class="input-container ic1">
+        <input id="bTitle" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="Book title" class="placeholder">Book title</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="author" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="Author name" class="placeholder">Author name</label>
+      </div>
+      <div class="input-container ic2">
+        <input id="publicationYear" class="input" type="year" placeholder=" " />
+        <div class="cut"></div>
+        <label for="PublicationYear" class="placeholder">Publish year</lable>
+      </div>
+      <div class="input-container ic2">
+        <input id="price" class="input" type="number" placeholder=" " />
+        <div class="cut cut-short"></div>
+        <label for="Price" class="placeholder">Price</lable>
+      </div>
+      <button type="submit" class="submit" style="background-color: #ee964b;">submit</button>
+    </form>
+    <!-- Delete button-->
+    <button style="background-color: #f4d35e;" class="button" onclick="toggleForm('delBookForm')"><i class="fa fa-trash"></i> Delete
+      Patron</button>
+
+    <form id="delBookForm" style="display: none;">
+      <div class="input-container ic1">
+        <input id="delBook" class="input" type="number" placeholder=" " />
+        <div class="cut"></div>
+        <label for="delBook" class="placeholder">Book ID</label>
+      </div>
+      <button type="submit" class="submit" style="background-color: #f4d35e;">submit</button>
+    </form>
+
+    <button style="background-color: #28afb0;" class="button" onclick="toggleForm('updateBookForm')"><i class="fa fa-pencil"></i>
+      Update Patron</button>
+    <form id="updateBookForm" style="display: none;">
+      <div class="input-container ic1">
+        <input id="delBook" class="input" type="number" placeholder=" " />
+        <div class="cut"></div>
+        <label for="delBook" class="placeholder">Book ID</label>
+      </div>
+      <button type="submit" class="submit" style="background-color: #28afb0;">submit</button>
+    </form>
+
+    <button style="background-color: #19647e;" class="button" onclick="toggleForm('getBookForm')"><i class="fa fa-search"></i> Get
+      Patron</button>
+      <form id="getBookForm" style="display: none;">
+        <div class="input-container ic1">
+          <input id="delBook" class="input" type="number" placeholder=" " />
+          <div class="cut"></div>
+          <label for="delBook" class="placeholder">Book ID</label>
+        </div>
+        <button type="submit" class="submit" style="background-color: #19647e;">submit</button>
+      </form>
+  </div>
+
+
+  <script src="JS/form.js"></script>
+</body>
+
+</html>

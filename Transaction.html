@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Management</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="Images/logo.jpg" type="Image/logo">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="CSS/dashboard.css">
+</head>
+<body class="Obody">
+    <div id="navbar-placeholder"></div><script src="JS/navbar.js"></script>
+    <script>
+        setNavbar();
+    </script><br><br>
+    
+    <div>
+        <h1 style="color: #f3f3f3;">Transaction Management</h1>
+    </div>
+    <div class="button-container">
+        <button style="background-color: #ee964b;" class="button" onclick="addPatron()"><i class="fa fa-plus"></i>Borrow Book</button>
+        <button style="background-color: #f4d35e;" class="button" onclick="deletePatron()"><i class="fa fa-trash"></i>Return Book</button>
+        <button style="background-color: #28afb0;" class="button" onclick="updatePatron()"><i class="fa fa-pencil"></i>History by Book</button>
+        <button style="background-color: #19647e;" class="button" onclick="getPatron()"><i class="fa fa-search"></i>View All History</button>
+      </div>
+
+
+</body>
+</html>

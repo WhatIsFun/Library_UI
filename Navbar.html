@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Book Haven</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="Images/logo.jpg" type="Image/logo">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="CSS/dashboard.css">
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <a href="dashboard.html" class="w3-padding-large w3-button">Home</a>
+    </div>
+    <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button" href="Patron.html" title="Patron">Patron<i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">Add patron</a>
+        <a href="#" class="w3-bar-item w3-button">Serch for a patron</a>
+        <a href="#" class="w3-bar-item w3-button">Update patron</a>
+        <a href="#" class="w3-bar-item w3-button">Delete patron</a>
+      </div>
+  </div>
+      <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" href="Book.html" title="Book">Book <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="Book.html" class="w3-bar-item w3-button">Add book</a>
+        <a href="Book.html" class="w3-bar-item w3-button">Serch for a book</a>
+        <a href="Book.html" class="w3-bar-item w3-button">Update book</a>
+        <a href="Book.html" class="w3-bar-item w3-button">Delete book</a>
+      </div>
+  </div>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" href="Transaction.html" title="BookTransaction">Book Transaction<i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">Borrow book</a>
+        <a href="#" class="w3-bar-item w3-button">Return book</a>
+        <a href="#" class="w3-bar-item w3-button">Borrowing history</a>
+      </div>
+    </div>
+    <a href="login.html" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
+      <i class=""></i>
+      Logout
+    </a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+  
+  <a href="Patron.html" class="w3-bar-item w3-button w3-padding-large">Patron</a>
+  <a href="Book.html" class="w3-bar-item w3-button w3-padding-large">Book</a>
+  <a href="Transaction.html" class="w3-bar-item w3-button w3-padding-large">Book Transaction</a>
+  <a href="login.html" class="w3-bar-item w3-button w3-padding-large">logout</a>
+</div>
+
+</body>
+</html>
