@@ -9,7 +9,7 @@
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100vh;
-  padding-top: 300px;
+  /*padding-top: 300px;*/
 }
 .form_container {
     width: fit-content;

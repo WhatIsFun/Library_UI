@@ -4,7 +4,7 @@ const main = document.getElementById("main");
 const apiURL = "https://localhost:7062/api/Book/getAllBooks";
 
 showBooks(apiURL);
-
+// Show all the books in the library
 function showBooks(url) {
    
     const requestOptions = {
