@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Book Haven</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="Images/logo.jpg" type="Image/logo">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="CSS/indexStyle.css">
+</head>
+<body>
+  <header>
+    <div id="navbarIndex-placeholder">
+
+    <script src="JS/navbar.js"></script>
+    <script>
+        setNavbarIndex();
+    </script>
+  </div>
+  </header>
+  
+<!-- First Parallax Image with Logo Text -->
+<!-- <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <img src="Images/Books.jpg">
+  </div>
+</div> -->
+
+<!-- Container (About Section) -->
+<div class="w3-content w3-container w3-padding-64" id="about">
+  <h3 class="w3-center">Welcome to Book Haven <span style="color: #28afb0;"> Your Literary Sanctuary</span></h3>
+  <p>At Book Haven, we believe in the magic of books and the power of reading to transport us to new worlds, ignite our imagination, and enrich our lives. Our library is not just a place; it's a haven for bibliophiles, a retreat for the curious, and a sanctuary for the seekers of knowledge.</p>
+  <div class="w3-row">
+    <div class="w3-col m6 w3-center w3-padding-large">
+      <img src="Images/logo.jpg" class="w3-round w3-image w3-opacity w3-hover-opacity-off" alt="Book Haven logo" width="300" height="150">
+    </div>
+
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+        <p class="w3-center"><em style="color: #ee964b;">Discover a World of Stories</em></p>
+      <p>Immerse yourself in our extensive collection of books spanning diverse genres. Whether you're an avid reader, a student, or simply in search of your next literary adventure, you'll find a treasure trove of titles waiting to be explored. From timeless classics to contemporary bestsellers, we've carefully curated a selection that caters to all tastes.</p>
+    </div>
+    <!-- Hide this text on small devices -->
+    <div class="w3-col m6 w3-hide-small w3-padding-large">
+        <p class="w3-center"><em style="color: #ee964b;">Borrow and Savor</em></p>
+      <p>Book Haven is more than a place to borrow books; it's a place to savor them. Our lending program allows patrons to take home their favorite titles, creating a bond with the characters and stories that resonate with their hearts. We believe in the joy of flipping through pages and the thrill of turning a well-worn book into a beloved companion.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Container (Contact Section) -->
+<div class="w3-content w3-container w3-padding-64" id="contact">
+  <h3 class="w3-center">Contact</h3>
+  <div class="w3-content w3-container w3-padding-64" id="about">
+  <p>We invite you to visit Book Haven and embark on a literary journey. Our cozy and welcoming space is your haven for quiet reflection, reading, and exploration. Our friendly staff is always ready to assist you in finding the perfect book for your mood and interests.</p>
+
+    <p>Thank you for being a part of our literary community. Book Haven is more than just a library; it's a place where stories come alive, where readers connect, and where the love of books is celebrated.</p>
+    
+    <p>Join us in this adventure, and let the pages of our books be your escape, your inspiration, and your refuge.</p>
+    
+    <p>Welcome to Book Haven.</p>
+  <div class="w3-row w3-padding-32 w3-section">
+    <div class="w3-col m4 w3-container">
+    </div>
+    <div class="w3-col m8 w3-panel">
+      <div class="w3-large w3-margin-bottom">
+        <i class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Muscat, Oman<br>
+        <i class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Phone: 93234578<br>
+        <i class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"></i> Email: bookhaven@mail.com<br>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://github.com/WhatIsFun" title="WhatIsFun" target="_blank" class="w3-hover-text-brown">WhatIsFun</a></p>
+</footer>
+ 
+
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function toggleFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>

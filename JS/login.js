@@ -1,4 +1,124 @@
-const Login = (event) => {
+// const AdminLogin = (event) => {
+//   event.preventDefault();
+//   const email = document.getElementById("email_field").value;
+//   const password = document.getElementById("password_field").value;
+
+//   const myHeaders = new Headers();
+//   myHeaders.append("Content-Type", "application/json");
+
+//   const data = {
+//     email: email,
+//     password: password,
+//   };
+
+//   const requestOptions = {
+//     method: "POST",
+//     headers: myHeaders,
+//     body: JSON.stringify(data),
+//     redirect: "follow",
+//   };
+//   fetch("https://localhost:7062/api/Login/EmployeeLogin", requestOptions)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok");
+//       }
+//       return response.text().then((result) => {
+//         if (response.ok) {
+//           // Successful login, save the token in local storage
+//           localStorage.setItem("jwt", result.token);
+//           // Navigate to dashboard.html
+//           window.location.href = "dashboard.html";
+//         } else {
+//           // Login failed, display an error message
+//           alert("Invalid email or password. Please try again.");
+//         }
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//       // Handle errors, such as displaying an error message to the user
+//     });
+// }
+
+const RegisterUser = (event) => {
+  event.preventDefault();
+  const nameIn = document.getElementById("username_field").value;
+  const emailIn = document.getElementById("email_field").value;
+  const passwordIn = document.getElementById("password_field").value;
+  const passwordConfirmIn = document.getElementById("confirmPassword_field").value;
+  const phoneNumIn = document.getElementById("phone_field").value;
+  const ageIn = document.getElementById("age_field").value;
+// Regular experssion
+  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  form.addEventListener('submit', function (event) {
+    // Prevent the form from submitting by default
+    e.preventDefault();
+
+    const email = emailIn.value;
+    const password = passwordIn.value;
+    const passwordConfirm = passwordConfirmIn.value;
+
+    // Validate email using regex
+    if (!email.match(emailPattern)) {
+      alert('Invalid email address');
+      return;
+    }
+
+    // Validate password using regex
+    if (!password.match(passwordPattern)) {
+      alert('Password must be at least 8 characters, including one uppercase letter, one lowercase letter, and one digit');
+      return;
+    }
+
+    // Check if the password and password confirmation match
+    if (password !== passwordConfirm) {
+      alert('Password and confirmation do not match');
+      return;
+    }
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "name": nameIn,
+      "email": emailIn,
+      "password": passwordIn,
+      "phoneNum": phoneNumIn,
+      "age": ageIn
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://localhost:7062/api/Register", requestOptions)
+      .then(response => {
+        if (response.ok) {
+          // Registration was successful
+          return response.text();
+        } else {
+          throw new Error('Registration failed');
+        }
+      })
+      .then(result => {
+        console.log(result); // This could be the success message from the server
+        // You can display the success message to the user
+        alert('Registration successful: ' + result);
+        // You may want to redirect the user to a different page
+      })
+      .catch(error => {
+        console.log('error', error);
+        // Handle registration errors, such as displaying an error message to the user
+        alert('Registration failed. Please try again.');
+      });
+        
+  })
+}
+
+const UserLogin = (event) => {
   event.preventDefault();
   const email = document.getElementById("email_field").value;
   const password = document.getElementById("password_field").value;
@@ -17,17 +137,18 @@ const Login = (event) => {
     body: JSON.stringify(data),
     redirect: "follow",
   };
-  fetch("https://localhost:7062/api/Login/EmployeeLogin", requestOptions)
+  fetch("https://localhost:7062/api/Login/Login", requestOptions)
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        alert("Invalid email or password. Please try again.");
       }
       return response.text().then((result) => {
         if (response.ok) {
           // Successful login, save the token in local storage
-          localStorage.setItem("jwt", result.token);
+          localStorage.setItem("jwt", result);
+          console.log(localStorage);
+          window.location.href = "index.html";
           // Navigate to dashboard.html
-          window.location.href = "dashboard.html";
         } else {
           // Login failed, display an error message
           alert("Invalid email or password. Please try again.");
@@ -40,11 +161,12 @@ const Login = (event) => {
     });
 }
 
-const Logout = () => {
 
+const Logout = () => {
+  localStorage.clear;
 }
     
-  
+  //Book Management
 const Addbook = () => {
   // Token from localStorage
   const token = localStorage.getItem("jwt");
@@ -82,25 +204,13 @@ const Addbook = () => {
 }
 
 
-// Addbook
 
+// Patron Managemnt
 
-// //Available books
-// var myHeaders = new Headers();
-// myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoiTW9oYW1tZWQiLCJleHAiOjE2OTc4MzQ4MzQsImlzcyI6Ik1vaGFtbWVkIiwiYXVkIjoiVFJBIn0.q_cx8ccQv7mpx22LblErZ_a1pZx6b2UK1PLjLRIzZQY");
-
-// var raw = "";
-
-// var requestOptions = {
-//   method: 'GET',
-//   headers: myHeaders,
-//   body: raw,
-//   redirect: 'follow'
-// };
-
-// fetch("https://localhost:7062/api/Book/available", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
-
+const AddPatron = () => {
   
+}
+
+const search = () => {
+  
+}
