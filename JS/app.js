@@ -92,23 +92,10 @@ const searchBook = (searchURL) => {
         if (isLoggedIn) {
           // User is logged in, show "Logout" button
           localStorage.removeItem("jwt"); // Clear the authentication status
-          // Navigate to the login page using JavaScript
-          navigateTo("login.html");
+          window.location.href = "index.html"; // Redirect to the login page
         } else {
           // User is not logged in, show "Login" button
-          // Navigate to the index page using JavaScript
-          navigateTo("index.html");
+          window.location.href = 'login.html'; // Redirect to the index page
         }
-      };
-    
-      // Function to navigate to a different page
-      function navigateTo(page) {
-        // Check if the current page is different from the target page
-        if (window.location.href.endsWith(page)) {
-          return; // Do nothing if already on the target page
-        }
-        
-        // Use JavaScript to navigate to the target page
-        window.location.href = page;
       }
-    });
+      });
