@@ -117,11 +117,11 @@ const RegisterUser = (event) => {
     });
 };
 
-const form = document.getElementById("registerForm"); // Change "your-form-id" to the actual ID of your form
-form.addEventListener("submit", RegisterUser);
+// const form = document.getElementById("registerForm"); // Change "your-form-id" to the actual ID of your form
+// form.addEventListener("submit", RegisterUser);
 
 // Login
-const UserLogin = (event) => {
+const userLogin = (event) => {
   event.preventDefault();
   const email = document.getElementById("email_field").value;
   const password = document.getElementById("password_field").value;
@@ -131,7 +131,7 @@ const UserLogin = (event) => {
 
   const data = {
     email: email,
-    password: password,
+    password: password
   };
 
   const requestOptions = {

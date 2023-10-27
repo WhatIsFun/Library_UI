@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
 body{
     display: flex;
@@ -25,8 +26,7 @@ main{
     font-size: 25px;
     font-weight: bold;
     border-radius: 15px;
-    cursor: pointer;
- 
+    cursor: pointer; 
   }
   
   .card img {
@@ -79,9 +79,9 @@ main{
   }
   .card button {
     font-size: 20px;
-    font-weight: bold;
+    font-weight: normal;
     color: #fff; /* Text color for the button */
-    background-color: #3498db; /* Background color for the button */
+    background-color: #19647e; /* Background color for the button */
     border: 0px;
     padding: 5px 10px;
     border-radius: 10px;

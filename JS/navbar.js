@@ -23,39 +23,39 @@ const setNavbarIndex = () => {
       console.error("Failed to load navigation bar:", error);
     });
 };
-// document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-// //console.log("Script is running");
-//   // Check if localStorage has a specific value (e.g., 1)
-//   const isLoggedIn = localStorage.getItem("jwt");
+//console.log("Script is running");
+  // Check if localStorage has a specific value (e.g., 1)
+  const isLoggedIn = localStorage.getItem("jwt");
 
-//   // Find the login button element by its ID
-//   const loginButton = document.getElementById("loginButton");
+  // Find the login button element by its ID
+  const loginButton = document.getElementById("loginButton");
 
-//   loginButton.textContent = isLoggedIn ? "LOGOUT" : "LOGIN";
+  loginButton.textContent = isLoggedIn ? "LOGOUT" : "LOGIN";
 
-//   // Set the click event handler
-//   loginButton.onclick = () => {
-//     if (isLoggedIn) {
-//       // User is logged in, show "Logout" button
-//       localStorage.removeItem("jwt"); // Clear the authentication status
-//       // Navigate to the login page using JavaScript
-//       navigateTo("login.html");
-//     } else {
-//       // User is not logged in, show "Login" button
-//       // Navigate to the index page using JavaScript
-//       navigateTo("index.html");
-//     }
-//   };
+  // Set the click event handler
+  loginButton.onclick = () => {
+    if (isLoggedIn) {
+      // User is logged in, show "Logout" button
+      localStorage.removeItem("jwt"); // Clear the authentication status
+      // Navigate to the login page using JavaScript
+      navigateTo("index.html");
+    } else {
+      // User is not logged in, show "Login" button
+      // Navigate to the index page using JavaScript
+      navigateTo("login.html");
+    }
+  };
 
-//   // Function to navigate to a different page
-//   function navigateTo(page) {
-//     // Check if the current page is different from the target page
-//     if (window.location.href.endsWith(page)) {
-//       return; // Do nothing if already on the target page
-//     }
+  // Function to navigate to a different page
+  function navigateTo(page) {
+    // Check if the current page is different from the target page
+    if (window.location.href.endsWith(page)) {
+      return; // Do nothing if already on the target page
+    }
 
-//     // Use JavaScript to navigate to the target page
-//     window.location.href = page;
-//   }
-// });
+    // Use JavaScript to navigate to the target page
+    window.location.href = page;
+  }
+});
