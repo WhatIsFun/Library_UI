@@ -6,96 +6,93 @@ const apiURL = "https://localhost:7062/api/Book/getAllBooks";
 showBooks(apiURL);
 // Show all the books in the library
 function showBooks(url) {
-   
-    const requestOptions = {
-        method: "GET",
-        
-        redirect: "follow",
-    };
+  const requestOptions = {
+    method: "GET",
 
-    fetch(url,requestOptions).then(res => res.json())
-        .then(function (data) {
-            console.log(data); 
+    redirect: "follow",
+  };
 
-            data.forEach(book => {
-                const el = document.createElement('div');
-                const image = document.createElement('img');
-                const text = document.createElement('h2');
+  fetch(url, requestOptions)
+    .then((res) => res.json())
+    .then(function (data) {
+      console.log(data);
 
-                text.innerHTML = book.title;
+      data.forEach((book) => {
+        const el = document.createElement("div");
+        const image = document.createElement("img");
+        const text = document.createElement("h2");
 
-                
-                image.src = book.imagePath; 
+        text.innerHTML = book.title;
 
-                el.appendChild(image);
-                el.appendChild(text);
-                main.appendChild(el);
-            });
-        });
+        image.src = book.imagePath;
+
+        el.appendChild(image);
+        el.appendChild(text);
+        main.appendChild(el);
+      });
+    });
 }
 
 // NavBar - Search
 const searchBook = (searchURL) => {
-    const search = document.getElementById("search");
-    const requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-  
-    fetch(searchURL, requestOptions)
-      .then((res) => res.json())
-      .then(function (data) {
-        console.log(data);
-  
-        data.forEach((book) => {
-          const el = document.createElement("div");
-          const image = document.createElement("img");
-          const text = document.createElement("h2");
-  
-          text.innerHTML = book.title;
-  
-          image.src = book.imagePath;
-  
-          el.appendChild(image);
-          el.appendChild(text);
-          main.appendChild(el);
-        });
-      });
+  const search = document.getElementById("search");
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow",
   };
-  search.addEventListener("input", () => {
-    main.innerHTML = "";
-  
-    const searchTerm = search.value.trim();
-    const searchURL = `https://localhost:7062/api/Book/byTitle/${searchTerm}`;
-  
-    if (searchTerm === '') {
-        showBooks(apiURL);
-    }
-    else{
-        searchBook(searchURL);
-    }
-  });
-//NavBar - Login 
-  document.addEventListener("DOMContentLoaded", function () {
-  
-    //console.log("Script is running");
-      // Check if localStorage has a specific value (e.g., 1)
-      const isLoggedIn = localStorage.getItem("jwt");
-    
-      // Find the login button element by its ID
-      const loginButton = document.getElementById("loginButton");
-    
-      loginButton.textContent = isLoggedIn ? "LOGOUT" : "LOGIN";
-    
-      // Set the click event handler
-      loginButton.onclick = () => {
-        if (isLoggedIn) {
-          // User is logged in, show "Logout" button
-          localStorage.removeItem("jwt"); // Clear the authentication status
-          window.location.href = "index.html"; // Redirect to the login page
-        } else {
-          // User is not logged in, show "Login" button
-          window.location.href = 'login.html'; // Redirect to the index page
-        }
-      }
+
+  fetch(searchURL, requestOptions)
+    .then((res) => res.json())
+    .then(function (data) {
+      console.log(data);
+
+      data.forEach((book) => {
+        const el = document.createElement("div");
+        const image = document.createElement("img");
+        const text = document.createElement("h2");
+
+        text.innerHTML = book.title;
+
+        image.src = book.imagePath;
+
+        el.appendChild(image);
+        el.appendChild(text);
+        main.appendChild(el);
       });
+    });
+};
+search.addEventListener("input", () => {
+  main.innerHTML = "";
+
+  const searchTerm = search.value.trim();
+  const searchURL = `https://localhost:7062/api/Book/byTitle/${searchTerm}`;
+
+  if (searchTerm === "") {
+    showBooks(apiURL);
+  } else {
+    searchBook(searchURL);
+  }
+});
+//NavBar - Login
+document.addEventListener("DOMContentLoaded", function () {
+  //console.log("Script is running");
+  // Check if localStorage has a specific value (e.g., 1)
+  const isLoggedIn = localStorage.getItem("jwt");
+
+  // Find the login button element by its ID
+  const loginButton = document.getElementById("loginButton");
+
+  loginButton.textContent = isLoggedIn ? "LOGOUT" : "LOGIN";
+
+  // Set the click event handler
+  loginButton.onclick = () => {
+    if (isLoggedIn) {
+      // User is logged in, show "Logout" button
+      localStorage.removeItem("jwt"); // Clear the authentication status
+      window.location.href = "index.html"; // Redirect to the login page
+    } else {
+      // User is not logged in, show "Login" button
+      window.location.href = "login.html"; // Redirect to the index page
+    }
+  };
+});

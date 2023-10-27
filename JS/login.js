@@ -46,7 +46,9 @@ const RegisterUser = (event) => {
   const nameIn = document.getElementById("username_field").value;
   const emailIn = document.getElementById("email_field").value;
   const passwordIn = document.getElementById("password_field").value;
-  const passwordConfirmIn = document.getElementById("confirmPassword_field").value;
+  const passwordConfirmIn = document.getElementById(
+    "confirmPassword_field"
+  ).value;
   const phoneNumIn = document.getElementById("phone_field").value;
   const ageIn = document.getElementById("age_field").value;
 
@@ -56,19 +58,21 @@ const RegisterUser = (event) => {
 
   // Check if the passwords match
   if (passwordIn !== passwordConfirmIn) {
-    alert('Password and confirmation do not match');
+    alert("Password and confirmation do not match");
     return;
   }
 
   // Validate email using regex
   if (!emailIn.match(emailPattern)) {
-    alert('Invalid email address');
+    alert("Invalid email address");
     return;
   }
 
   // Validate password using regex
   if (!passwordIn.match(passwordPattern)) {
-    alert('Password must be at least 8 characters, including one uppercase letter, one lowercase letter, and one digit');
+    alert(
+      "Password must be at least 8 characters, including one uppercase letter, one lowercase letter, and one digit"
+    );
     return;
   }
 
@@ -76,45 +80,45 @@ const RegisterUser = (event) => {
   myHeaders.append("Content-Type", "application/json");
 
   var raw = JSON.stringify({
-    "name": nameIn,
-    "email": emailIn,
-    "password": passwordIn,
-    "phoneNum": phoneNumIn,
-    "age": ageIn
+    name: nameIn,
+    email: emailIn,
+    password: passwordIn,
+    phoneNum: phoneNumIn,
+    age: ageIn,
   });
 
   var requestOptions = {
-    method: 'POST',
+    method: "POST",
     headers: myHeaders,
     body: raw,
-    redirect: 'follow'
+    redirect: "follow",
   };
 
   fetch("https://localhost:7062/api/Register", requestOptions)
-    .then(response => {
+    .then((response) => {
       if (response.ok) {
         // Registration was successful
         return response.text();
       } else {
-        throw new Error('Registration failed');
+        throw new Error("Registration failed");
       }
     })
-    .then(result => {
+    .then((result) => {
       console.log(result); // This could be the success message from the server
       // You can display the success message to the user
-      alert('Registration successful: ' + result);
+      alert("Registration successful: " + result);
       window.location.href = "login.html";
       // You may want to redirect the user to a different page
     })
-    .catch(error => {
-      console.log('error', error);
+    .catch((error) => {
+      console.log("error", error);
       // Handle registration errors, such as displaying an error message to the user
-      alert('Registration failed. Please try again.');
+      alert("Registration failed. Please try again.");
     });
 };
 
 const form = document.getElementById("registerForm"); // Change "your-form-id" to the actual ID of your form
-form.addEventListener('submit', RegisterUser);
+form.addEventListener("submit", RegisterUser);
 
 // Login
 const UserLogin = (event) => {
@@ -158,14 +162,13 @@ const UserLogin = (event) => {
       console.error("Error:", error);
       // Handle errors, such as displaying an error message to the user
     });
-}
-
+};
 
 const Logout = () => {
   localStorage.clear;
-}
-    
-  //Book Management
+};
+
+//Book Management
 const Addbook = () => {
   // Token from localStorage
   const token = localStorage.getItem("jwt");
@@ -178,29 +181,28 @@ const Addbook = () => {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
   myHeaders.append("Content-Type", "application/json");
-  
+
   var raw = JSON.stringify({
-    "title": bookTitle,
-    "author": author,
-    "publicationYear": publicationYear,
-    "price": price
+    title: bookTitle,
+    author: author,
+    publicationYear: publicationYear,
+    price: price,
   });
-  
+
   var requestOptions = {
-    method: 'POST',
+    method: "POST",
     headers: myHeaders,
     body: raw,
-    redirect: 'follow'
+    redirect: "follow",
   };
-  
+
   fetch("https://localhost:7062/api/Book/addBook", requestOptions)
-    .then(response => response.text())
-    .then(result => {
+    .then((response) => response.text())
+    .then((result) => {
       console.log(result);
-      
     })
-    .catch(error => console.error('Error:', error));
-}
+    .catch((error) => console.error("Error:", error));
+};
 // Password visibility
 // function togglePasswordVisibility() {
 //   const passwordInput = document.getElementById("password");
@@ -217,13 +219,8 @@ const Addbook = () => {
 //   }
 // }
 
-
 // Patron Managemnt
 
-const AddPatron = () => {
-  
-}
+const AddPatron = () => {};
 
-const search = () => {
-  
-}
+const search = () => {};

@@ -24,7 +24,7 @@ const setNavbarIndex = () => {
     });
 };
 // document.addEventListener("DOMContentLoaded", function () {
-  
+
 // //console.log("Script is running");
 //   // Check if localStorage has a specific value (e.g., 1)
 //   const isLoggedIn = localStorage.getItem("jwt");
@@ -54,7 +54,7 @@ const setNavbarIndex = () => {
 //     if (window.location.href.endsWith(page)) {
 //       return; // Do nothing if already on the target page
 //     }
-    
+
 //     // Use JavaScript to navigate to the target page
 //     window.location.href = page;
 //   }
