@@ -33,7 +33,11 @@ function showBooks(url) {
           
           button.textContent = "Borrow book";
           button.addEventListener("click", () =>{
-            alert(`You have borrowed ${book.title}`);
+            if (localStorage.getItem("jwt") !== null){
+              window.location.href='BorrowingBook.html';
+            }else{
+              alert('You need to login first to borrow the book.');
+            }
           })
         }
 
@@ -89,7 +93,11 @@ const searchBook = (searchURL) => {
           
           button.textContent = "Borrow book";
           button.addEventListener("click", () =>{
-            alert(`You have borrowed ${book.title}`);
+            if (localStorage.getItem("jwt") !== null){
+              window.location.href='BorrowingBook.html';
+            }else{
+              alert('You need to login first to borrow the book.');
+            }
           })
         }
 
@@ -144,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // User is logged in, show "Logout" button
       localStorage.removeItem("jwt"); // Clear the authentication status
       window.location.href = "index.html"; // Redirect to the login page
+      location.reload();
     } else {
       // User is not logged in, show "Login" button
       window.location.href = "login.html"; // Redirect to the index page
