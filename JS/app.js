@@ -21,13 +21,40 @@ function showBooks(url) {
         const el = document.createElement("div");
         const image = document.createElement("img");
         const text = document.createElement("h2");
+        const button = document.createElement("button");
 
         text.innerHTML = book.title;
-
         image.src = book.imagePath;
+        button.innerHTML  = book.availabilty;
+
+        if(button.innerHTML === false){
+          button.textContent = "Not available";
+        }else{
+          
+          button.textContent = "Borrow book";
+          button.addEventListener("click", () =>{
+            alert(`You have borrowed ${book.title}`);
+          })
+        }
 
         el.appendChild(image);
         el.appendChild(text);
+        el.appendChild(button);
+        el.classList.add("card");
+        button.classList.add("hidden-button");
+        el.style.display = "flex";
+        el.style.flexDirection = "column";
+        el.style.alignItems = "center";
+        el.style.justifyContent = "center";
+        el.addEventListener("mouseenter", () => {
+          // Show the button when the card is hovered
+          button.classList.remove("hidden-button");
+        });
+
+        el.addEventListener("mouseleave", () => {
+          // Hide the button when the mouse leaves the card
+          button.classList.add("hidden-button");
+        });
         main.appendChild(el);
       });
     });
@@ -50,17 +77,44 @@ const searchBook = (searchURL) => {
         const el = document.createElement("div");
         const image = document.createElement("img");
         const text = document.createElement("h2");
+        const button = document.createElement("button");
 
         text.innerHTML = book.title;
-
         image.src = book.imagePath;
+        button.innerHTML  = book.availabilty;
+
+        if(button.innerHTML === false){
+          button.textContent = "Not available";
+        }else{
+          
+          button.textContent = "Borrow book";
+          button.addEventListener("click", () =>{
+            alert(`You have borrowed ${book.title}`);
+          })
+        }
 
         el.appendChild(image);
         el.appendChild(text);
+        el.appendChild(button);
+        el.classList.add("card");
+        button.classList.add("hidden-button");
+        el.style.display = "flex";
+        el.style.flexDirection = "column";
+        el.style.alignItems = "center";
+        el.style.justifyContent = "center";
+        el.addEventListener("mouseenter", () => {
+          // Show the button when the card is hovered
+          button.classList.remove("hidden-button");
+        });
+
+        el.addEventListener("mouseleave", () => {
+          // Hide the button when the mouse leaves the card
+          button.classList.add("hidden-button");
+        });
         main.appendChild(el);
       });
     });
-};
+}
 search.addEventListener("input", () => {
   main.innerHTML = "";
 
