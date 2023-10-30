@@ -14,18 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <p class="desc">${book.description}</p>
             
           </div>
-          <button class="borrowingButton">Borrow</button>
-        </div>`;
-  
-      bookModel.style.display = 'block';
-      const closeButton = bookModel.querySelector('.borrowingButton');
-      if (closeButton) {
-        closeButton.addEventListener('click', () => {
-          bookModel.style.display = 'none';
-        });
-      } else {
-        console.error(".closeButton element not found within bookModel!");
-      }
+          <button class="borrowingButton" data-bookid="${book.id}" onClick="BorrowBook()">Borrow</button>        </div>`;
     }
   });
   

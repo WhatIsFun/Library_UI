@@ -166,40 +166,7 @@ const RegisterUser = (event) => {
 // };
 
 //Book Management
-const Addbook = () => {
-  // Token from localStorage
-  const token = localStorage.getItem("jwt");
 
-  const bookTitle = document.getElementById("bTitle").value;
-  const author = document.getElementById("author").value;
-  const publicationYear = document.getElementById("publicationYear").value;
-  const price = document.getElementById("price").value;
-
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", `Bearer ${token}`);
-  myHeaders.append("Content-Type", "application/json");
-
-  var raw = JSON.stringify({
-    title: bookTitle,
-    author: author,
-    publicationYear: publicationYear,
-    price: price,
-  });
-
-  var requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  };
-
-  fetch("https://localhost:7062/api/Book/addBook", requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((error) => console.error("Error:", error));
-};
 // Password visibility
 // function togglePasswordVisibility() {
 //   const passwordInput = document.getElementById("password");
@@ -243,24 +210,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (adminCheckbox.checked) {
       // Admin login
-      fetch("https://localhost:7062/api/Login/EmployeeLogin", requestOptions)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.text().then((result) => {
-            if (response.ok) {
-              // Successful admin login
-              localStorage.setItem("jwt", result);
-              window.location.href = "dashboard.html";
-            } else {
-              alert("Invalid email or password. Please try again.");
-            }
-          });
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+      fetch("https://localhost:7062/api/Login/AdminLogin", requestOptions)
+    .then((response) => {
+      if (response.ok) {
+        return response.text().then((result) => {
+          // Successful admin login
+          localStorage.setItem("jwt", result);
+          window.location.href = "dashboard.html";
+        }) 
+      } else {
+        // Admin login failed
+        alert("Invalid email or password. Please try again.");
+        throw new Error("Admin login failed");
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+
     } else {
       // User login
       fetch("https://localhost:7062/api/Login/Login", requestOptions)
@@ -272,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
               localStorage.setItem("jwt", result);
               window.location.href = "index.html";
+              
             } else {
               alert("Invalid email or password. Please try again.");
             }
