@@ -1,3 +1,4 @@
+// Admin Login function
 // const AdminLogin = (event) => {
 //   event.preventDefault();
 //   const email = document.getElementById("email_field").value;
@@ -25,7 +26,7 @@
 //       return response.text().then((result) => {
 //         if (response.ok) {
 //           // Successful login, save the token in local storage
-//           localStorage.setItem("jwt", result.token);
+//           localStorage.setItem("jwt", result);
 //           // Navigate to dashboard.html
 //           window.location.href = "dashboard.html";
 //         } else {
@@ -84,14 +85,14 @@ const RegisterUser = (event) => {
     email: emailIn,
     password: passwordIn,
     phoneNum: phoneNumIn,
-    age: ageIn,
+    age: ageIn
   });
 
   var requestOptions = {
     method: "POST",
     headers: myHeaders,
     body: raw,
-    redirect: "follow",
+    redirect: "follow"
   };
 
   fetch("https://localhost:7062/api/Register", requestOptions)
@@ -121,52 +122,48 @@ const RegisterUser = (event) => {
 // form.addEventListener("submit", RegisterUser);
 
 // Login
-const userLogin = (event) => {
-  event.preventDefault();
-  const email = document.getElementById("email_field").value;
-  const password = document.getElementById("password_field").value;
+// const userLogin = (event) => {
+//   event.preventDefault();
+//   const email = document.getElementById("email_field").value;
+//   const password = document.getElementById("password_field").value;
 
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+//   const myHeaders = new Headers();
+//   myHeaders.append("Content-Type", "application/json");
 
-  const data = {
-    email: email,
-    password: password
-  };
+//   const data = {
+//     email: email,
+//     password: password
+//   };
 
-  const requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(data),
-    redirect: "follow",
-  };
-  fetch("https://localhost:7062/api/Login/Login", requestOptions)
-    .then((response) => {
-      if (!response.ok) {
-        alert("Invalid email or password. Please try again.");
-      }
-      return response.text().then((result) => {
-        if (response.ok) {
-          // Successful login, save the token in local storage
-          localStorage.setItem("jwt", result);
-          console.log(localStorage);
-          window.location.href = "index.html";
-          // Navigate to dashboard.html
-        } else {
-          // Login failed, display an error message
-          alert("Invalid email or password. Please try again.");
-        }
-      });
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      // Handle errors, such as displaying an error message to the user
-    });
-};
-
-const Logout = () => {
-  localStorage.clear;
-};
+//   const requestOptions = {
+//     method: "POST",
+//     headers: myHeaders,
+//     body: JSON.stringify(data),
+//     redirect: "follow",
+//   };
+//   fetch("https://localhost:7062/api/Login/Login", requestOptions)
+//     .then((response) => {
+//       if (!response.ok) {
+//         alert("Invalid email or password. Please try again.");
+//       }
+//       return response.text().then((result) => {
+//         if (response.ok) {
+//           // Successful login, save the token in local storage
+//           localStorage.setItem("jwt", result);
+//           console.log(localStorage);
+//           window.location.href = "index.html";
+//           // Navigate to dashboard.html
+//         } else {
+//           // Login failed, display an error message
+//           alert("Invalid email or password. Please try again.");
+//         }
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//       // Handle errors, such as displaying an error message to the user
+//     });
+// };
 
 //Book Management
 const Addbook = () => {
@@ -219,8 +216,74 @@ const Addbook = () => {
 //   }
 // }
 
-// Patron Managemnt
 
-const AddPatron = () => {};
 
-const search = () => {};
+document.addEventListener('DOMContentLoaded', function() {
+  const adminCheckbox = document.getElementById('adminCheckbox');
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const email = document.getElementById("email_field").value;
+    const password = document.getElementById("password_field").value;
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const data = {
+      email: email,
+      password: password
+    };
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify(data),
+      redirect: "follow"
+    };
+
+    if (adminCheckbox.checked) {
+      // Admin login
+      fetch("https://localhost:7062/api/Login/EmployeeLogin", requestOptions)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text().then((result) => {
+            if (response.ok) {
+              // Successful admin login
+              localStorage.setItem("jwt", result);
+              window.location.href = "dashboard.html";
+            } else {
+              alert("Invalid email or password. Please try again.");
+            }
+          });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } else {
+      // User login
+      fetch("https://localhost:7062/api/Login/Login", requestOptions)
+        .then((response) => {
+          if (!response.ok) {
+            alert("Invalid email or password. Please try again.");
+          }
+          return response.text().then((result) => {
+            if (response.ok) {
+              localStorage.setItem("jwt", result);
+              window.location.href = "index.html";
+            } else {
+              alert("Invalid email or password. Please try again.");
+            }
+          });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  }
+
+  // Add an event listener to the login button
+  const loginButton = document.querySelector('.sign-in_btn');
+  loginButton.addEventListener('click', handleLogin);
+});

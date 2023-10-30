@@ -1,0 +1,78 @@
+.modal {
+    display: none;
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 100vh;
+
+}
+
+.modal-content {
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack children vertically */
+    align-items: left; /* Center horizontally */
+    justify-content: left; /* Center vertically */
+    padding: 20px; /* Add padding to the element */
+    border: 0px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+    width: 80%;
+    margin: 0 auto; /* Center the element horizontally */
+    text-align: left;
+}
+
+.book-info {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    padding-left: 0px;
+    position: relative;
+
+}
+
+.book-image {
+    width: 250px;
+    height: 300px;
+    margin-right: 20px;
+    padding-left: 30px;
+}
+
+.book-details {
+    flex: 1;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.book-author {
+    font-size: 18px;
+    color: #555;
+}
+
+.publication-year {
+    font-size: 18px;
+    color: #555;
+}
+desc{
+    font-size: 18px;
+    color: #555;
+}
+span{
+    color: #28afb0;
+}
+button{
+    width: 20%;
+    height: 40px;
+    border: 0;
+    background: #28afb0;
+    border-radius: 15px;
+    outline: none;
+    color: #1f271b;
+    cursor: pointer;
+    position: absolute;
+    right: 276px;
+    bottom: -1px;
+}

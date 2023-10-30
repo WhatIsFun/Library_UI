@@ -25,15 +25,16 @@ function showBooks(url) {
 
         text.innerHTML = book.title;
         image.src = book.imagePath;
-        button.innerHTML  = book.availabilty;
+        button.innerHTML  = book.availability;
 
-        if(button.innerHTML === false){
+        if(book.availability !== true){
           button.textContent = "Not available";
         }else{
           
           button.textContent = "Borrow book";
           button.addEventListener("click", () =>{
             if (localStorage.getItem("jwt") !== null){
+              sessionStorage.setItem('buttonClick', JSON.stringify(book));
               window.location.href='BorrowingBook.html';
             }else{
               alert('You need to login first to borrow the book.');
@@ -86,14 +87,16 @@ const searchBook = (searchURL) => {
         text.innerHTML = book.title;
         image.src = book.imagePath;
         button.innerHTML  = book.availabilty;
+        
 
-        if(button.innerHTML === false){
+        if(book.availability !== true){
           button.textContent = "Not available";
         }else{
           
           button.textContent = "Borrow book";
           button.addEventListener("click", () =>{
             if (localStorage.getItem("jwt") !== null){
+              sessionStorage.setItem('buttonClick', JSON.stringify(book));
               window.location.href='BorrowingBook.html';
             }else{
               alert('You need to login first to borrow the book.');
@@ -151,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isLoggedIn) {
       // User is logged in, show "Logout" button
       localStorage.removeItem("jwt"); // Clear the authentication status
-      window.location.href = "index.html"; // Redirect to the login page
+      //window.location.href = "index.html"; // Redirect to the login page
       location.reload();
     } else {
       // User is not logged in, show "Login" button
@@ -159,3 +162,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 });
+
+

@@ -135,3 +135,19 @@
     color: #ffffff;
     cursor: pointer;
   }
+  
+  /* Hide the default checkbox */
+.container input {
+  display: none;
+}
+
+.container {
+  display: inline-flex;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  
+}
