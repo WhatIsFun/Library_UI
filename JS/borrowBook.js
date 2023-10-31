@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <p class="desc">${book.description}</p>
             
           </div>
-          <button class="borrowingButton" data-bookid="${book.id}" onClick="BorrowBook()">Borrow</button>        </div>`;
+          <button class="borrowingButton" data-bookid="${book.id}" onClick="BorrowBook(userId, ${book.id})">Borrow</button>        </div>`;
     }
   });
   

@@ -36,7 +36,7 @@ function showBooks(url) {
           button.addEventListener("click", () =>{
             if (localStorage.getItem("jwt") !== null){
               sessionStorage.setItem('buttonClick', JSON.stringify(book));
-              window.location.href='BorrowingBook.html?bookId=${bookId}';
+              window.location.href=`BorrowingBook.html?bookId=${bookId}`;
             }else{
               alert('You need to login first to borrow the book.');
             }
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem("jwt");
     const decodedToken = jwt_decode(token);
     const userId = decodedToken.PatronId;
-      BorrowBook(userId, bookId);
+      BorrowBook(userId, bookId, token);
   });
 });
 const BorrowBook = (userId, bookId) => {
